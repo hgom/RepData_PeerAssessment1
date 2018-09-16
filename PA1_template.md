@@ -4,6 +4,7 @@ output:
   html_document:
     keep_md: true
 ---
+
 ## Loading libraries
 
 ```r
@@ -33,7 +34,7 @@ ggplot(data=sum_steps_by_day, aes(steps)) + geom_histogram(binwidth = 1000) +
   ggtitle("Histogram total steps per day") + xlab("total steps per day") + ylab("frequence")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](figures/hist_daily_total_steps-1.png)<!-- -->
 
 3. Calculate mean and median of the total steps per day
 * Mean 10766
@@ -55,7 +56,7 @@ ggplot(average_steps_per_interval, aes(as.POSIXct(str_pad(interval,side="left", 
   xlab("daily activity, 5 minute interval") + ylab("average number of steps taken") 
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](figures/plot_average_daily_activity-1.png)<!-- -->
 
 3. Calculate the 5-minute interval that, on average, contains the maximum number of steps
 * 5-minute interval that contains the maximum number op steps 835
@@ -82,7 +83,7 @@ ggplot(data=sum_steps_by_day, aes(steps)) + geom_histogram(binwidth = 1000) +
   ggtitle("Histogram total steps per day") + xlab("total steps per day") + ylab("frequence")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](figures/hist_daily_total_steps_imputed-1.png)<!-- -->
 
 4. Calculate mean and median if the total steps
 * Mean 10750
@@ -108,4 +109,4 @@ ggplot(average_steps_per_interval, aes(as.POSIXct(str_pad(interval,side="left", 
     xlab("daily activity, 5-minute interval") + ylab("Number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](figures/plot_average_steps_week_versus_weekend-1.png)<!-- -->

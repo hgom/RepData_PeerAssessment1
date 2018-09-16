@@ -4,6 +4,11 @@ output:
   html_document:
     keep_md: true
 ---
+```{r opts, echo = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "figures/"
+)
+```
 ## Loading libraries
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(ggplot2)
@@ -23,7 +28,7 @@ sum_steps_by_day <- aggregate(steps ~ date, activity_data, sum, na.rm = TRUE)
 ```
 
 2. Make histogram of the totals steps per day
-```{r echo=TRUE}
+```{r hist_daily_total_steps, echo=TRUE}
 ggplot(data=sum_steps_by_day, aes(steps)) + geom_histogram(binwidth = 1000) + 
   scale_y_continuous(limits = c(0,10), breaks = c(0:10)) +
   ggtitle("Histogram total steps per day") + xlab("total steps per day") + ylab("frequence")
@@ -41,7 +46,7 @@ names(average_steps_per_interval) <- c("interval", "average_steps")
 ```
 
 2. Plot average steps per interval
-```{r echo=TRUE}
+```{r plot_average_daily_activity, echo=TRUE}
 ggplot(average_steps_per_interval, aes(as.POSIXct(str_pad(interval,side="left", pad = "0",width = 4), format = "%H%M"),
   average_steps)) + geom_line() + scale_x_datetime(breaks = "2 hour", date_labels = "%H:%M") +
   xlab("daily activity, 5 minute interval") + ylab("average number of steps taken") 
@@ -64,7 +69,7 @@ sum_steps_by_day <- aggregate(steps ~ date, activity_data_imputed, sum, na.rm = 
 ```
 
 3. plot histogram of the totals steps per day
-```{r echo=TRUE}
+```{r hist_daily_total_steps_imputed, echo=TRUE}
 ggplot(data=sum_steps_by_day, aes(steps)) + geom_histogram(binwidth = 1000) + 
   scale_y_continuous(limit = c(0, 15), breaks=c(0:15)) +
   ggtitle("Histogram total steps per day") + xlab("total steps per day") + ylab("frequence")
@@ -86,7 +91,7 @@ average_steps_per_interval <- aggregate(steps ~ interval + day_type, activity_da
 ```
 
 3. plot average steps per interval for  week days abd weekend days
-```{r echo=TRUE}
+```{r plot_average_steps_week_versus_weekend, echo=TRUE}
 ggplot(average_steps_per_interval, aes(as.POSIXct(str_pad(interval,side="left", pad = "0",width = 4), format = "%H%M"), steps, color = day_type)) + geom_line() + scale_x_datetime(breaks = "2 hours", date_labels = "%H:%M") +
     xlab("daily activity, 5-minute interval") + ylab("Number of steps")
 ```
